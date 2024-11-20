@@ -29,8 +29,7 @@ def read_pdf(file_path):
     try:
         pdf_reader = PdfReader(file_path)
         content = []
-        for page_num in range(len(pdf_reader.pages)):
-            page = pdf_reader.pages[page_num]
+        for page in pdf_reader.pages:
             content.append(page.extract_text())
         return "\n".join(content)
     except Exception as e:
@@ -110,14 +109,14 @@ if uploaded_docx_file is not None:
     st.write(doc_content)
 
 # File uploader for first CSV
-uploaded_csv_file1 = st.file_uploader("Choose the first CSV file", type="csv")
+uploaded_csv_file1 = st.file_uploader("Choose the first CSV file", type="csv", key="csv1")
 if uploaded_csv_file1 is not None:
     csv_path1 = save_uploaded_file(uploaded_csv_file1)
     csv_content1 = read_csv(csv_path1)
     st.write(csv_content1)
 
 # File uploader for second CSV
-uploaded_csv_file2 = st.file_uploader("Choose the second CSV file", type="csv")
+uploaded_csv_file2 = st.file_uploader("Choose the second CSV file", type="csv", key="csv2")
 if uploaded_csv_file2 is not None:
     csv_path2 = save_uploaded_file(uploaded_csv_file2)
     csv_content2 = read_csv(csv_path2)
@@ -131,14 +130,14 @@ if uploaded_pdf_file is not None:
     st.write(pdf_content)
 
 # File uploader for first Python file
-uploaded_py_file1 = st.file_uploader("Choose the first Python file", type="py")
+uploaded_py_file1 = st.file_uploader("Choose the first Python file", type="py", key="py1")
 if uploaded_py_file1 is not None:
     py_path1 = save_uploaded_file(uploaded_py_file1)
     py_content1 = read_py(py_path1)
     st.code(py_content1, language='python')
 
 # File uploader for second Python file
-uploaded_py_file2 = st.file_uploader("Choose the second Python file", type="py")
+uploaded_py_file2 = st.file_uploader("Choose the second Python file", type="py", key="py2")
 if uploaded_py_file2 is not None:
     py_path2 = save_uploaded_file(uploaded_py_file2)
     py_content2 = read_py(py_path2)
