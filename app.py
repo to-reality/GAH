@@ -16,7 +16,7 @@ def read_docx(file):
 # Function to read the content of the xlsx file
 def read_xlsx(file):
     try:
-        df = pd.read_excel(file, engine='openpyxl')
+        df = pd.read_excel(file, sheet_name=0, engine='openpyxl')
         return df
     except ValueError as e:
         st.error(f"Error reading the Excel file: {e}")
