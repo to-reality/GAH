@@ -3,7 +3,7 @@
 import streamlit as st
 import pandas as pd
 import docx
-import PyPDF2
+from PyPDF2 import PdfReader
 
 # Function to read the content of the docx file
 def read_docx(file):
@@ -25,10 +25,10 @@ def read_csv(file):
 # Function to read the content of the pdf file
 def read_pdf(file):
     try:
-        pdf_reader = PyPDF2.PdfFileReader(file)
+        pdf_reader = PdfReader(file)
         content = []
-        for page_num in range(pdf_reader.numPages):
-            page = pdf_reader.getPage(page_num)
+        for page_num in range(len(pdf_reader.pages)):
+            page = pdf_reader.pages[page_num]
             content.append(page.extract_text())
         return "\n".join(content)
     except Exception as e:
