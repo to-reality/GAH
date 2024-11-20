@@ -133,3 +133,10 @@ if uploaded_py_file2 is not None:
     py_content2 = read_py(uploaded_py_file2)
     if py_content2 is not None:
         st.code(py_content2, language='python')
+
+# File uploader for third Python file
+uploaded_py_file3 = st.file_uploader("Choose the third Python file", type="py")
+if uploaded_py_file3 is not None:
+    py_content3 = read_py(uploaded_py_file3)
+    if py_content3 is not None:
+        st.code(py_content3, language='python')
