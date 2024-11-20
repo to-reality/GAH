@@ -148,4 +148,13 @@ if st.session_state['py_content_01'] is not None:
 # File uploader for second Python file
 uploaded_py_file2 = st.file_uploader("Choose the second Python file", type="py")
 if uploaded_py_file2 is not None:
-    st.session_state['py_content_02'] = read_py(uploaded
+    st.session_state['py_content2'] = read_py(uploaded_py_file2)
+if st.session_state['py_content2'] is not None:
+    st.code(st.session_state['py_content2'], language='python')
+
+# File uploader for third Python file
+uploaded_py_file3 = st.file_uploader("Choose the third Python file", type="py")
+if uploaded_py_file3 is not None:
+    st.session_state['py_content3'] = read_py(uploaded_py_file3)
+if st.session_state['py_content3'] is not None:
+    st.code(st.session_state['py_content3'], language='python')
