@@ -13,6 +13,11 @@ def read_docx(file):
         content.append(para.text)
     return "\n".join(content)
 
+# Function to read the content of the xlsx file
+def read_xlsx(file):
+    df = pd.read_excel(file, engine='openpyxl')
+    return df
+
 # Streamlit app
 st.title('The Statistical Presentation of the Location Frequency of the Scholars')
 
