@@ -83,7 +83,3 @@ st.image(r'/Users/miaomiao/Desktop/留学/2.CHC5904 WED 1530 N103/Assignment 2/i
          caption='1.3.4-5', use_column_width=True)
 st.image(r'/Users/miaomiao/Desktop/留学/2.CHC5904 WED 1530 N103/Assignment 2/images/1.3.4-6.png',
          caption='1.3.4-6', use_column_width=True)
-
-# Display full document content
-with st.expander("View Full Document Content"):
-    st.text(doc_content)
