@@ -13,13 +13,13 @@ def read_docx(file):
         content.append(para.text)
     return "\n".join(content)
 
-# Function to read the content of the xlsx file
-def read_xlsx(file):
+# Function to read the content of the csv file
+def read_csv(file):
     try:
-        df = pd.read_excel(file, sheet_name=0, engine='openpyxl')
+        df = pd.read_csv(file)
         return df
     except ValueError as e:
-        st.error(f"Error reading the Excel file: {e}")
+        st.error(f"Error reading the CSV file: {e}")
         return None
 
 # Streamlit app
@@ -31,12 +31,12 @@ if uploaded_docx_file is not None:
     doc_content = read_docx(uploaded_docx_file)
     st.write(doc_content)
 
-# File uploader for XLSX
-uploaded_xlsx_file = st.file_uploader("Choose an XLSX file", type="xlsx")
-if uploaded_xlsx_file is not None:
-    xlsx_content = read_xlsx(uploaded_xlsx_file)
-    if xlsx_content is not None:
-        st.write(xlsx_content)
+# File uploader for CSV
+uploaded_csv_file = st.file_uploader("Choose a CSV file", type="csv")
+if uploaded_csv_file is not None:
+    csv_content = read_csv(uploaded_csv_file)
+    if csv_content is not None:
+        st.write(csv_content)
 
 st.header('1. Workflow')
 st.subheader('1.1 Use Python and Excel to Make Statistics on the Frequency of Locations')
