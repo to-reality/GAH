@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
 import streamlit as st
 import pandas as pd
 import docx
+import PyPDF2
 
 # Function to read the content of the docx file
 def read_docx(file):
@@ -20,6 +20,28 @@ def read_csv(file):
         return df
     except ValueError as e:
         st.error(f"Error reading the CSV file: {e}")
+        return None
+
+# Function to read the content of the pdf file
+def read_pdf(file):
+    try:
+        pdf_reader = PyPDF2.PdfFileReader(file)
+        content = []
+        for page_num in range(pdf_reader.numPages):
+            page = pdf_reader.getPage(page_num)
+            content.append(page.extract_text())
+        return "\n".join(content)
+    except Exception as e:
+        st.error(f"Error reading the PDF file: {e}")
+        return None
+
+# Function to read the content of the py file
+def read_py(file):
+    try:
+        content = file.read().decode("utf-8")
+        return content
+    except Exception as e:
+        st.error(f"Error reading the Python file: {e}")
         return None
 
 # Streamlit app
@@ -90,3 +112,24 @@ if uploaded_csv_file2 is not None:
     csv_content2 = read_csv(uploaded_csv_file2)
     if csv_content2 is not None:
         st.write(csv_content2)
+
+# File uploader for PDF
+uploaded_pdf_file = st.file_uploader("Choose a PDF file", type="pdf")
+if uploaded_pdf_file is not None:
+    pdf_content = read_pdf(uploaded_pdf_file)
+    if pdf_content is not None:
+        st.write(pdf_content)
+
+# File uploader for first Python file
+uploaded_py_file1 = st.file_uploader("Choose the first Python file", type="py")
+if uploaded_py_file1 is not None:
+    py_content1 = read_py(uploaded_py_file1)
+    if py_content1 is not None:
+        st.code(py_content1, language='python')
+
+# File uploader for second Python file
+uploaded_py_file2 = st.file_uploader("Choose the second Python file", type="py")
+if uploaded_py_file2 is not None:
+    py_content2 = read_py(uploaded_py_file2)
+    if py_content2 is not None:
+        st.code(py_content2, language='python')
