@@ -31,19 +31,19 @@ if uploaded_docx_file is not None:
     doc_content = read_docx(uploaded_docx_file)
     st.write(doc_content)
 
-# File uploader for CSV
-uploaded_csv_file = st.file_uploader("Choose a CSV file", type="csv")
-if uploaded_csv_file is not None:
-    csv_content = read_csv(uploaded_csv_file)
-    if csv_content is not None:
-        st.write(csv_content)
+# File uploader for first CSV
+uploaded_csv_file1 = st.file_uploader("Choose the first CSV file", type="csv")
+if uploaded_csv_file1 is not None:
+    csv_content1 = read_csv(uploaded_csv_file1)
+    if csv_content1 is not None:
+        st.write(csv_content1)
 
-# File uploader for CSV
-uploaded_csv_file = st.file_uploader("Choose a CSV file", type="csv")
-if uploaded_csv_file is not None:
-    csv_content = read_csv(uploaded_csv_file)
-    if csv_content is not None:
-        st.write(csv_content)
+# File uploader for second CSV
+uploaded_csv_file2 = st.file_uploader("Choose the second CSV file", type="csv")
+if uploaded_csv_file2 is not None:
+    csv_content2 = read_csv(uploaded_csv_file2)
+    if csv_content2 is not None:
+        st.write(csv_content2)
 
 st.header('1. Workflow')
 st.subheader('1.1 Use Python and Excel to Make Statistics on the Frequency of Locations')
