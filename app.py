@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 import streamlit as st
 import pandas as pd
 import docx
@@ -47,18 +49,16 @@ def read_py(file):
 # Initialize session state
 if 'doc_content' not in st.session_state:
     st.session_state['doc_content'] = None
-if 'csv_content_01' not in st.session_state:
-    st.session_state['csv_content_01'] = None
-if 'csv_content_02' not in st.session_state:
-    st.session_state['csv_content_02'] = None
+if 'csv_content1' not in st.session_state:
+    st.session_state['csv_content1'] = None
+if 'csv_content2' not in st.session_state:
+    st.session_state['csv_content2'] = None
 if 'pdf_content' not in st.session_state:
     st.session_state['pdf_content'] = None
-if 'py_content_01' not in st.session_state:
-    st.session_state['py_content_01'] = None
-if 'py_content_02' not in st.session_state:
-    st.session_state['py_content_02'] = None
-if 'py_content_03' not in st.session_state:
-    st.session_state['py_content_03'] = None
+if 'py_content1' not in st.session_state:
+    st.session_state['py_content1'] = None
+if 'py_content2' not in st.session_state:
+    st.session_state['py_content2'] = None
 
 # Streamlit app
 st.title('The Statistical Presentation of the Location Frequency of the Scholars')
@@ -110,50 +110,43 @@ st.image('1.3.4-6.png', caption='1.3.4-6', use_column_width=True)
 st.header('2. Files')
 
 # File uploader for DOCX
-uploaded_docx_file = st.file_uploader("Choose a DOCX file", type="docx", key="doc_uploader")
+uploaded_docx_file = st.file_uploader("Choose a DOCX file", type="docx")
 if uploaded_docx_file is not None:
     st.session_state['doc_content'] = read_docx(uploaded_docx_file)
-if st.session_state['doc_content']:
+if st.session_state['doc_content'] is not None:
     st.write(st.session_state['doc_content'])
 
 # File uploader for first CSV
-uploaded_csv_file_01 = st.file_uploader("Choose the first CSV file", type="csv", key="csv_uploader_01")
-if uploaded_csv_file_01 is not None:
-    st.session_state['csv_content_01'] = read_csv(uploaded_csv_file_01)
-if st.session_state['csv_content_01']:
-    st.write(st.session_state['csv_content_01'])
+uploaded_csv_file1 = st.file_uploader("Choose the first CSV file", type="csv")
+if uploaded_csv_file1 is not None:
+    st.session_state['csv_content1'] = read_csv(uploaded_csv_file1)
+if st.session_state['csv_content1'] is not None:
+    st.write(st.session_state['csv_content1'])
 
 # File uploader for second CSV
-uploaded_csv_file_02 = st.file_uploader("Choose the second CSV file", type="csv", key="csv_uploader_02")
-if uploaded_csv_file_02 is not None:
-    st.session_state['csv_content_02'] = read_csv(uploaded_csv_file_02)
-if st.session_state['csv_content_02']:
-    st.write(st.session_state['csv_content_02'])
+uploaded_csv_file2 = st.file_uploader("Choose the second CSV file", type="csv")
+if uploaded_csv_file2 is not None:
+    st.session_state['csv_content2'] = read_csv(uploaded_csv_file2)
+if st.session_state['csv_content2'] is not None:
+    st.write(st.session_state['csv_content2'])
 
 # File uploader for PDF
-uploaded_pdf_file = st.file_uploader("Choose a PDF file", type="pdf", key="pdf_uploader")
+uploaded_pdf_file = st.file_uploader("Choose a PDF file", type="pdf")
 if uploaded_pdf_file is not None:
     st.session_state['pdf_content'] = read_pdf(uploaded_pdf_file)
-if st.session_state['pdf_content']:
+if st.session_state['pdf_content'] is not None:
     st.write(st.session_state['pdf_content'])
 
 # File uploader for first Python file
-uploaded_py_file_01 = st.file_uploader("Choose the first Python file", type="py", key="py_uploader_01")
-if uploaded_py_file_01 is not None:
-    st.session_state['py_content_01'] = read_py(uploaded_py_file_01)
-if st.session_state['py_content_01']:
-    st.code(st.session_state['py_content_01'], language='python')
+uploaded_py_file1 = st.file_uploader("Choose the first Python file", type="py")
+if uploaded_py_file1 is not None:
+    st.session_state['py_content1'] = read_py(uploaded_py_file1)
+if st.session_state['py_content1'] is not None:
+    st.code(st.session_state['py_content1'], language='python')
 
 # File uploader for second Python file
-uploaded_py_file_02 = st.file_uploader("Choose the second Python file", type="py", key="py_uploader_02")
-if uploaded_py_file_02 is not None:
-    st.session_state['py_content_02'] = read_py(uploaded_py_file_02)
-if st.session_state['py_content_02']:
-    st.code(st.session_state['py_content_02'], language='python')
-
-# File uploader for third Python file
-uploaded_py_file_03 = st.file_uploader("Choose the third Python file", type="py", key="py_uploader_03")
-if uploaded_py_file_03 is not None:
-    st.session_state['py_content_03'] = read_py(uploaded_py_file_03)
-if st.session_state['py_content_03']:
-    st.code(st.session_state['py_content_03'], language='python')
+uploaded_py_file2 = st.file_uploader("Choose the second Python file", type="py")
+if uploaded_py_file2 is not None:
+    st.session_state['py_content2'] = read_py(uploaded_py_file2)
+if st.session_state['py_content2'] is not None:
+    st.code(st.session_state['py_content2'], language='python')
