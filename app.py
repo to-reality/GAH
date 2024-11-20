@@ -32,8 +32,15 @@ if uploaded_docx_file is not None:
     st.write(doc_content)
 
 # File uploader for CSV
-uploaded_csv_file = st.file_uploader("Choose a CSV file", type="csv")
-if uploaded_csv_file is not None:
+uploaded_csv_file1 = st.file_uploader("Choose a CSV file", type="csv")
+if uploaded_csv_file1 is not None:
+    csv_content = read_csv(uploaded_csv_file)
+    if csv_content is not None:
+        st.write(csv_content)
+
+# File uploader for CSV
+uploaded_csv_file2 = st.file_uploader("Choose a CSV file", type="csv")
+if uploaded_csv_file2 is not None:
     csv_content = read_csv(uploaded_csv_file)
     if csv_content is not None:
         st.write(csv_content)
