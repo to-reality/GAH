@@ -25,26 +25,6 @@ def read_csv(file):
 # Streamlit app
 st.title('The Statistical Presentation of the Location Frequency of the Scholars')
 
-# File uploader for DOCX
-uploaded_docx_file = st.file_uploader("Choose a DOCX file", type="docx")
-if uploaded_docx_file is not None:
-    doc_content = read_docx(uploaded_docx_file)
-    st.write(doc_content)
-
-# File uploader for first CSV
-uploaded_csv_file1 = st.file_uploader("Choose the first CSV file", type="csv")
-if uploaded_csv_file1 is not None:
-    csv_content1 = read_csv(uploaded_csv_file1)
-    if csv_content1 is not None:
-        st.write(csv_content1)
-
-# File uploader for second CSV
-uploaded_csv_file2 = st.file_uploader("Choose the second CSV file", type="csv")
-if uploaded_csv_file2 is not None:
-    csv_content2 = read_csv(uploaded_csv_file2)
-    if csv_content2 is not None:
-        st.write(csv_content2)
-
 st.header('1. Workflow')
 st.subheader('1.1 Use Python and Excel to Make Statistics on the Frequency of Locations')
 
@@ -87,3 +67,26 @@ st.image('1.3.4-3.png', caption='1.3.4-3', use_column_width=True)
 st.image('1.3.4-4.png', caption='1.3.4-4', use_column_width=True)
 st.image('1.3.4-5.png', caption='1.3.4-5', use_column_width=True)
 st.image('1.3.4-6.png', caption='1.3.4-6', use_column_width=True)
+
+# File upload section
+st.header('2. Files')
+
+# File uploader for DOCX
+uploaded_docx_file = st.file_uploader("Choose a DOCX file", type="docx")
+if uploaded_docx_file is not None:
+    doc_content = read_docx(uploaded_docx_file)
+    st.write(doc_content)
+
+# File uploader for first CSV
+uploaded_csv_file1 = st.file_uploader("Choose the first CSV file", type="csv")
+if uploaded_csv_file1 is not None:
+    csv_content1 = read_csv(uploaded_csv_file1)
+    if csv_content1 is not None:
+        st.write(csv_content1)
+
+# File uploader for second CSV
+uploaded_csv_file2 = st.file_uploader("Choose the second CSV file", type="csv")
+if uploaded_csv_file2 is not None:
+    csv_content2 = read_csv(uploaded_csv_file2)
+    if csv_content2 is not None:
+        st.write(csv_content2)
