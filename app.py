@@ -17,6 +17,11 @@ def read_docx(file):
 def read_xlsx(file):
     df = pd.read_excel(file, engine='openpyxl')
     return df
+# File uploader for XLSX
+uploaded_xlsx_file = st.file_uploader("Choose an XLSX file", type="xlsx")
+if uploaded_xlsx_file is not None:
+    xlsx_content = read_xlsx(uploaded_xlsx_file)
+    st.write(xlsx_content)
 
 # Streamlit app
 st.title('The Statistical Presentation of the Location Frequency of the Scholars')
